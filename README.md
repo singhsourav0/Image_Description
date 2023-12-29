@@ -1,7 +1,7 @@
 # Image Caption Generator
 
 This repository implements an Image Caption Generator using a deep learning model with attention mechanisms. The model is developed in Python using TensorFlow and TensorFlow Hub. The primary goal is to generate descriptive captions for images.
-
+![Generated Captions]([path/to/your/image.png](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*ENx4JZhq_9rwN2gYsuvHAQ.png)
 ## Prerequisites
 
 - Python 3.6 or higher
