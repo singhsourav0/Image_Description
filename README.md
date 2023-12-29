@@ -44,8 +44,6 @@ The captions are tokenized using the `TextVectorization` layer from TensorFlow. 
 - Sparse categorical cross-entropy loss.
 - Adam optimizer.
 
-## Training Process
 
-The model is trained using a batched dataset. The training process involves one epoch to demonstrate the workflow.
-![badge](<https://miro.medium.com/v2/resize:fit:1000/format:webp/1*ENx4JZhq_9rwN2gYsuvHAQ.png>)
+![badge](<https://miro.medium.com/v2/resize:fit:700/format:webp/1*ENx4JZhq_9rwN2gYsuvHAQ.png>)
 
