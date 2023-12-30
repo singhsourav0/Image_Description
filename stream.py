@@ -1,7 +1,7 @@
 import streamlit as st
 from PIL import Image
 from io import BytesIO
-import app
+import predict_step from app
 # from transformers import VisionEncoderDecoderModel, ViTImageProcessor, AutoTokenizer
 # from transformers import BertConfig, ViTConfig, VisionEncoderDecoderConfig, VisionEncoderDecoderModel
 # import torch
