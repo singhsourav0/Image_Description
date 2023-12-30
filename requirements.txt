@@ -1,5 +1,5 @@
 streamlit 
 PIL
 io
-transformers , VisionEncoderDecoderModel, ViTImageProcessor, AutoTokenizer
+transformers 
 torch
