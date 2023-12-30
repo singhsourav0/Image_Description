@@ -1,0 +1,5 @@
+streamlit as st
+PIL
+io
+transformers , VisionEncoderDecoderModel, ViTImageProcessor, AutoTokenizer
+torch
