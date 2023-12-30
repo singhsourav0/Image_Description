@@ -90,7 +90,7 @@ st.image(image, caption="Default Image", use_column_width=True, width=300)  # Ad
 
 # Display default caption
 container = st.container(border=True)
-default_caption = predict_step([default_image_path])
+default_caption = app.predict_step([default_image_path])
 container.write("### Default Image Caption:")
 container.markdown(f" > # {default_caption[0]}")
 
@@ -106,7 +106,7 @@ if my_upload is not None:
 
         # Call image_caption function with the uploaded image
         container = st.container(border=True)
-        uploaded_caption = predict_step([my_upload])
+        uploaded_caption = app.predict_step([my_upload])
         container.write("## Uploaded Image Caption:")
         container.markdown(f"> # {uploaded_caption[0]}")
 
