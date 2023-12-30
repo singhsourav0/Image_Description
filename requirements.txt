@@ -1,5 +1,4 @@
 streamlit 
-PIL
 io
 transformers 
 torch
