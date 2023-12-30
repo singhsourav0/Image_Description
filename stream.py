@@ -2,6 +2,7 @@ import streamlit as st
 from PIL import Image
 from io import BytesIO
 from transformers import VisionEncoderDecoderModel, ViTImageProcessor, AutoTokenizer
+from transformers import BertConfig, ViTConfig, VisionEncoderDecoderConfig, VisionEncoderDecoderModel
 import torch
 
 # Load model and tokenizer
