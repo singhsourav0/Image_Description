@@ -1,4 +1,4 @@
-streamlit as st
+streamlit 
 PIL
 io
 transformers , VisionEncoderDecoderModel, ViTImageProcessor, AutoTokenizer
