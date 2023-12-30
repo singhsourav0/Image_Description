@@ -80,7 +80,7 @@ st.write("## :dog: Try uploading an image to watch it magically generate a capti
 st.sidebar.write("## Upload and Copy 🌈")
 
 # Default image path
-default_image_path = "./p1.jpeg"
+default_image_path = "image/ro.jpg"
 
 # Display default image (set width to control the size)
 image = Image.open(default_image_path)
@@ -146,7 +146,7 @@ elif tabs == "Developers":
     st.write("### Meet the Developers")
 
     # Developer
-    st.image("./SS.jpeg", caption="Developer", use_column_width=True, width=20) 
+    st.image("https://media.licdn.com/dms/image/D4D03AQH-xOdK5K2fHg/profile-displayphoto-shrink_200_200/0/1694320992432?e=1709164800&v=beta&t=L2W5BSfYGiIyPU24tOcnzZHh7yGnXA4WQ1bh_Ykf5tQ", caption="Developer", use_column_width=True, width=40) 
     st.write("**Name:** SOURAV KUMAR")
     st.write("**GitHub:** [sourav kumar](https://github.com/singhsourav0)")
     st.write("**LinkedIn:** [Sourav Kumar](https://www.linkedin.com/in/singhsourav0)")
