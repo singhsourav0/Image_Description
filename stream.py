@@ -35,9 +35,7 @@ def predict_step(image_paths):
 
     preds = tokenizer.batch_decode(output_ids, skip_special_tokens=True)
     preds = [pred.strip() for pred in preds]
-return preds
-## Set Streamlit page config
-st.set_page_config(layout="wide", page_title="🌈 Image Caption Generator", page_icon="🚀")
+    return preds
 
 # Set Streamlit page config
 st.set_page_config(layout="wide", page_title="Image Caption Generator")
@@ -110,7 +108,6 @@ if my_upload is not None:
         uploaded_caption = app.predict_step([my_upload])
         container.write("## Uploaded Image Caption:")
         container.markdown(f"> # {uploaded_caption[0]}")
-
 
 # Tab: About
 if tabs == "About":
