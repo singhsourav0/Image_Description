@@ -1,77 +1,78 @@
 import streamlit as st
+import app
 from PIL import Image
 from io import BytesIO
-from app import predict_step
-# from transformers import VisionEncoderDecoderModel, ViTImageProcessor, AutoTokenizer
-# from transformers import BertConfig, ViTConfig, VisionEncoderDecoderConfig, VisionEncoderDecoderModel
-# import torch
 
-# # Load model and tokenizer
-# model = VisionEncoderDecoderModel.from_pretrained("nlpconnect/vit-gpt2-image-captioning")
-# feature_extractor = ViTImageProcessor.from_pretrained("nlpconnect/vit-gpt2-image-captioning")
-# tokenizer = AutoTokenizer.from_pretrained("nlpconnect/vit-gpt2-image-captioning")
+from transformers import VisionEncoderDecoderModel, ViTImageProcessor, AutoTokenizer
+from transformers import BertConfig, ViTConfig, VisionEncoderDecoderConfig, VisionEncoderDecoderModel
+import torch
 
-# device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-# model.to(device)
+# Load model and tokenizer
+model = VisionEncoderDecoderModel.from_pretrained("nlpconnect/vit-gpt2-image-captioning")
+feature_extractor = ViTImageProcessor.from_pretrained("nlpconnect/vit-gpt2-image-captioning")
+tokenizer = AutoTokenizer.from_pretrained("nlpconnect/vit-gpt2-image-captioning")
 
-# max_length = 16
-# num_beams = 4
-# gen_kwargs = {"max_length": max_length, "num_beams": num_beams}
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+model.to(device)
 
-# def predict_step(image_paths):
-#     images = []
-#     for image_path in image_paths:
-#         i_image = Image.open(image_path)
-#         if i_image.mode != "RGB":
-#             i_image = i_image.convert(mode="RGB")
+max_length = 16
+num_beams = 4
+gen_kwargs = {"max_length": max_length, "num_beams": num_beams}
 
-#         images.append(i_image)
+def predict_step(image_paths):
+    images = []
+    for image_path in image_paths:
+        i_image = Image.open(image_path)
+        if i_image.mode != "RGB":
+            i_image = i_image.convert(mode="RGB")
 
-#     pixel_values = feature_extractor(images=images, return_tensors="pt").pixel_values
-#     pixel_values = pixel_values.to(device)
+        images.append(i_image)
 
-#     output_ids = model.generate(pixel_values, **gen_kwargs)
+    pixel_values = feature_extractor(images=images, return_tensors="pt").pixel_values
+    pixel_values = pixel_values.to(device)
 
-#     preds = tokenizer.batch_decode(output_ids, skip_special_tokens=True)
-#     preds = [pred.strip() for pred in preds]
-#     return preds
+    output_ids = model.generate(pixel_values, **gen_kwargs)
+
+    preds = tokenizer.batch_decode(output_ids, skip_special_tokens=True)
+    preds = [pred.strip() for pred in preds]
+return preds
 ## Set Streamlit page config
 st.set_page_config(layout="wide", page_title="🌈 Image Caption Generator", page_icon="🚀")
 
-# # Set Streamlit page config
-# st.set_page_config(layout="wide", page_title="Image Caption Generator")
+# Set Streamlit page config
+st.set_page_config(layout="wide", page_title="Image Caption Generator")
 
-# # Main content
-# st.write("## Generate Caption From Input Image")
-# st.write(":dog: Try uploading an image to watch it magically generate a caption for you.")
-# st.sidebar.write("## Upload and copy :gear:")
+# Main content
+st.write("## Generate Caption From Input Image")
+st.write(":dog: Try uploading an image to watch it magically generate a caption for you.")
+st.sidebar.write("## Upload and copy :gear:")
 
-# # Default image path
-# default_image_path = "./p1.jpeg"
+# Default image path
+default_image_path = "image/ro.jpeg"
 
-# # Display default image
-# image = Image.open(default_image_path)
-# st.image(image, caption="Default Image", use_column_width=True)
+# Display default image
+image = Image.open(default_image_path)
+st.image(image, caption="Default Image", use_column_width=True)
 
-# # Display default caption
-# default_caption = predict_step([default_image_path])
-# st.write("### Default Image Caption:")
-# st.markdown(f"> {default_caption[0]}")
+# Display default caption
+default_caption = predict_step([default_image_path])
+st.write("### Default Image Caption:")
+st.markdown(f"> {default_caption[0]}")
 
-# # Display uploaded image and caption
-# my_upload = st.sidebar.file_uploader("Upload an image", type=["png", "jpg", "jpeg"])
+# Display uploaded image and caption
+my_upload = st.sidebar.file_uploader("Upload an image", type=["png", "jpg", "jpeg"])
 
-# if my_upload is not None:
-#     if my_upload.size > 5 * 1024 * 1024:  # 5MB
-#         st.error("The uploaded file is too large. Please upload an image smaller than 5MB.")
-#     else:
-#         # Display uploaded image
-#         st.image(my_upload, caption="Uploaded Image", use_column_width=True)
+if my_upload is not None:
+    if my_upload.size > 5 * 1024 * 1024:  # 5MB
+        st.error("The uploaded file is too large. Please upload an image smaller than 5MB.")
+    else:
+        # Display uploaded image
+        st.image(my_upload, caption="Uploaded Image", use_column_width=True)
 
-#         # Call image_caption function with the uploaded image
-#         uploaded_caption = predict_step([my_upload])
-#         st.write("### Uploaded Image Caption:")
-#         st.markdown(f"> {uploaded_caption[0]}")
+        # Call image_caption function with the uploaded image
+        uploaded_caption = predict_step([my_upload])
+        st.write("### Uploaded Image Caption:")
+        st.markdown(f"> {uploaded_caption[0]}")
 
 # Tabs for "About" and "Developers"
 tabs = st.sidebar.radio("Tabs", ("About", "Developers"))
