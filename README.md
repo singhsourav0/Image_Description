@@ -1,49 +1,55 @@
-# Image Caption Generator
+**Image Description**
 
-This repository implements an Image Caption Generator using a deep learning model with attention mechanisms. The model is developed in Python using TensorFlow and TensorFlow Hub. The primary goal is to generate descriptive captions for images.
+**Purpose**
 
-## Prerequisites
+This project aims to provide a comprehensive understanding of images by generating detailed descriptions of their content. It leverages the power of image processing, computer vision, and natural language processing to bridge the gap between visual and textual domains.
 
-- Python 3.6 or higher
-- TensorFlow 2.15.0
-- TensorFlow Datasets
-- TensorFlow Hub
-- Matplotlib
-- Numpy
+**Features**
 
-## Getting Started
+* **Image Analysis:** Extracts visual features such as objects, colors, textures, and spatial relationships from images.
+* **Scene Interpretation:** Identifies the overall scene depicted in the image, including its location, activity, and time of day.
+* **Object Recognition:** Recognizes and classifies objects present in the image, capturing their size, shape, and context.
+* **Natural Language Description:** Generates coherent and descriptive sentences that accurately describe the image's content and salient features.
 
-1. **Clone the repository:**
+**Technologies Used**
 
-   ```bash
-   git clone https://github.com/singhsourav0/Image_Caption
-   cd Image_Caption
-## Training
+* **TensorFlow 2.0:** Deep learning and image processing
+* **OpenCV:** Computer vision tasks
+* **SpaCy:** Natural language processing
+* **Flask:** Web API development
 
-The model is trained on a dataset of images, each paired with corresponding captions. The captions undergo preprocessing to include start and end tokens.
+**Getting Started**
 
-### Tokenization
+To use the Image Description API, follow these steps:
 
-The captions are tokenized using the `TextVectorization` layer from TensorFlow. Special tokens `<start>` and `<end>` are added to each caption.
+1. Clone the repository: `git clone https://github.com/singhsourav0/Image_Description.git`
+2. Install dependencies: `pip install -r requirements.txt`
+3. Run the API: `python app.py`
+4. Send an HTTP POST request to the endpoint `http://localhost:5000/predict` with the image file as multipart/form-data.
 
-### Model Architecture
+**Response Format**
 
-#### Encoder
+The API will return a JSON response with the following fields:
 
-- Utilizes a pre-trained image feature extractor (Inception ResNet V2).
-- Extracted features are reshaped and passed through a dense layer to obtain the encoder output.
+* `description`: A natural language description of the image.
+* `scene`: A classification of the scene type (e.g., indoor, outdoor, landscape).
+* `objects`: A list of objects detected in the image and their bounding boxes.
 
-#### Decoder
+**Contribution Guidelines**
 
-- Embedding layer for word inputs.
-- Gated Recurrent Unit (GRU) layer with attention mechanism.
-- Layer normalization and dense layer for output.
+Contributions are welcome! Please follow these guidelines:
 
-### Training
+* Fork the repository and create a new branch.
+* Make changes and add tests.
+* Submit a pull request with a clear description of your changes.
 
-- Sparse categorical cross-entropy loss.
-- Adam optimizer.
+**License**
 
+This project is licensed under the MIT License.
 
-![badge](<https://miro.medium.com/v2/resize:fit:700/format:webp/1*ENx4JZhq_9rwN2gYsuvHAQ.png>)
+**Contact**
 
+For any questions or support, please reach out to:
+
+* Email: [Email Address]
+* Website: [Website URL]
